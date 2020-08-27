@@ -1,5 +1,7 @@
 package web_study_09.dao;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -29,7 +31,7 @@ public class MemberDaoTest {
 		Member selectMember = MemberDaoImpl.getInstance().selectMemberByUserId(new Member("somi"));
 		Assert.assertNotNull(selectMember);
 
-		System.out.println(selectMember);
+		System.out.printf("%s%n%n", selectMember);
 	}
 
 	@Test
@@ -43,9 +45,9 @@ public class MemberDaoTest {
 	}
 
 	@Test
-	public void test02UpdateMemder() {
+	public void test02UpdateMemder() throws ParseException {
 		System.out.printf("%s()%n", "test02UpdateMemder");
-		Member updateMember = new Member("JSP", "parkgy", "5678", "jsp@gmail.com", "010-5555-5555", 1);
+		Member updateMember = new Member("JSP", "parkgy", "5678", "jsp@gmail.com", "010-5555-5555", 1, new Date());
 		int res = MemberDaoImpl.getInstance().updateMemder(updateMember);
 		Assert.assertEquals(1, res);
 
