@@ -32,7 +32,7 @@ public class JoinController extends HttpServlet {
 	private void Process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			request.getRequestDispatcher("member/join.jsp").forward(request, response);

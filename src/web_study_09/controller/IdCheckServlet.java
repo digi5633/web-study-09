@@ -31,7 +31,7 @@ public class IdCheckServlet extends HttpServlet {
 	private void Process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		String userId = request.getParameter("userId").trim();
 		Member member = service.getMember(new Member(userId));

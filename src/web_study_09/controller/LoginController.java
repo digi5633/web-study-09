@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
 	protected void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		// request.setCharacterEncoding("UTF-8");
 
 		String url = "member/login.jsp";
 
@@ -52,6 +52,7 @@ public class LoginController extends HttpServlet {
 			if (pwd.equals(resMember.getPwd())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", resMember);
+				session.setMaxInactiveInterval(60 * 60);
 				request.setAttribute("message", "회원 가입에 성공했습니다.");
 				url = "main.jsp";
 			} else {
