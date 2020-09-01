@@ -30,8 +30,6 @@ public class Member {
 		super();
 		this.userId = userId;
 	}
-	
-	
 
 	public Member(String name, String userId, String pwd, String email, String phone, int admin) {
 		super();

@@ -18,12 +18,12 @@ function idCheck() {
 		document.formm.userId.focus();
 		return;
 	}
-	var url = "idCheck.do?userid=" + document.frm.userId.value;
+	var url = "idCheck.do?userId=" + document.frm.userId.value;
 	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
-function idok(userid) {
+function idok(userId) {
 	opener.frm.userId.value = document.frm.userId.value;
 	opener.frm.reId.value = document.frm.userId.value;
 	self.close();
