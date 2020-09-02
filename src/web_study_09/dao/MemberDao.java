@@ -12,7 +12,7 @@ public interface MemberDao {
 	
 	int insertMember(Member member);
 	
-	int updateMemder(Member member);
+	int updateMember(Member member);
 	
 	int deleteMember(Member member);
 		

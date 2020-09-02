@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -94,16 +93,16 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int updateMemder(Member member) {
-		String sql = "UPDATE MEMBER SET NAME= ?, PWD= ?, EMAIL= ?, PHONE= ?, ADMIN= ?, JOINDATE= ? WHERE USERID= ?";
+	public int updateMember(Member member) {
+		String sql = "UPDATE MEMBER SET NAME= ?, PWD= ?, EMAIL= ?, PHONE= ?, ADMIN= ?, JOINDATE=sysdate WHERE USERID= ?";
 		try (Connection con = JdbcUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, member.getName());
 			pstmt.setString(2, member.getPwd());
 			pstmt.setString(3, member.getEmail());
 			pstmt.setString(4, member.getPhone());
 			pstmt.setInt(5, member.getAdmin());
-			pstmt.setTimestamp(6, new Timestamp(member.getJoinDate().getTime()));
-			pstmt.setString(7, member.getUserId());
+			// pstmt.setTimestamp(6, new Timestamp(member.getJoinDate().getTime()));
+			pstmt.setString(6, member.getUserId());
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -48,7 +48,7 @@ public class MemberDaoTest {
 	public void test02UpdateMemder() throws ParseException {
 		System.out.printf("%s()%n", "test02UpdateMemder");
 		Member updateMember = new Member("JSP", "parkgy", "5678", "jsp@gmail.com", "010-5555-5555", 1, new Date());
-		int res = MemberDaoImpl.getInstance().updateMemder(updateMember);
+		int res = MemberDaoImpl.getInstance().updateMember(updateMember);
 		Assert.assertEquals(1, res);
 
 		System.out.printf("%s%n%n", updateMember);
