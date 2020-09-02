@@ -9,38 +9,38 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "encoding", value = "UTF-8") })
-public class CharacterEncodingFilter implements Filter {
-	private String enc;
+@WebFilter("/*")
+public class LoginCheckFilter implements Filter {
 
-	public CharacterEncodingFilter() {
+	public LoginCheckFilter() {
 
 	}
 
 	public void destroy() {
-		System.out.println("destroy()");
+
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		
 		System.out.println("LoginCheckFilter - doFilter()");
 		
-		request.setCharacterEncoding(enc);
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		chain.doFilter(request, response);
+		HttpSession session = httpRequest.getSession();
+
+		if (session != null && session.getAttribute("loginUser") != null) {
+			chain.doFilter(request, response);
+		} else {
+			request.getRequestDispatcher("login.do").forward(request, response);
+		}
+
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		
-		System.out.println("init(FilterConfig fConfig)");
-		
-		enc = fConfig.getInitParameter("encoding");
-		if (enc == null) {
-			enc = "UTF-8";
-		}
+
 	}
 
 }
